@@ -65,7 +65,10 @@ namespace MusicPlayer
                 {
                     if (File.Exists(item.FilePath))
                     {
-                        this.FileList.Add(item.FileName, item);
+                        //如果重新加载回去的是带后缀名的话那就和第一次加的时候不匹配，第一次加的是不带后缀名的.
+                        string file_Name = item.FileName.Substring(0, item.FileName.LastIndexOf("."));//没有扩展名的文件名，作为集合的Key使用
+
+                        this.FileList.Add(file_Name, item);
                     }
                 }
 
@@ -100,6 +103,18 @@ namespace MusicPlayer
             fs.Close();
         }
         /// <summary>
+        /// 使用记住文件名方式保存上次播放位置
+        /// </summary>
+        public void SavSavePlayFileName(string fileName)
+        {
+            FileStream fs = new FileStream("playFileName.obj", FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(fileName);
+            sw.Close();
+            fs.Close();
+        }
+
+        /// <summary>
         /// 读取上一次播放位置：如果记住的是文件名，或索引，如果这个文件不存在，则要考虑，否则出错...
         /// </summary>
         /// <returns></returns>
@@ -116,6 +131,24 @@ namespace MusicPlayer
             }
             else return -1;
         }
+        /// <summary>
+        /// 读取上次播放的文件名
+        /// </summary>
+        /// <returns></returns>
+        public string ReadPlayFileName()
+        {
+            if (File.Exists("playFileName.obj"))
+            {
+                FileStream fs = new FileStream("playFileName.obj", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                string lastFileName = sr.ReadToEnd().Trim();
+                sr.Close();
+                fs.Close();
+                return lastFileName;
+            }
+            else return "";
+        }
+
         #endregion
 
         #region 文件另存为和清空播放列表
@@ -148,6 +181,11 @@ namespace MusicPlayer
             {
                 File.Delete("playIndex.obj");
             }
+            if (File.Exists("playFileName.obj"))
+            {
+                File.Delete("playFileName.obj");
+            }
+            
         }
 
         #endregion

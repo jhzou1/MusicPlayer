@@ -72,7 +72,7 @@
             // 
             this.myPlayer.Enabled = true;
             this.myPlayer.Location = new System.Drawing.Point(260, 65);
-            this.myPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.myPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.myPlayer.Name = "myPlayer";
             this.myPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("myPlayer.OcxState")));
             this.myPlayer.Size = new System.Drawing.Size(798, 479);
@@ -111,7 +111,7 @@
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMin.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMin.Location = new System.Drawing.Point(1227, 16);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(4);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(39, 31);
             this.btnMin.TabIndex = 3;
@@ -125,7 +125,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClose.Location = new System.Drawing.Point(1273, 16);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(39, 31);
             this.btnClose.TabIndex = 3;
@@ -152,7 +152,7 @@
             this.panel_bar.Controls.Add(this.trackBar_Position);
             this.panel_bar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_bar.Location = new System.Drawing.Point(0, 716);
-            this.panel_bar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_bar.Margin = new System.Windows.Forms.Padding(4);
             this.panel_bar.Name = "panel_bar";
             this.panel_bar.Size = new System.Drawing.Size(1336, 99);
             this.panel_bar.TabIndex = 8;
@@ -163,7 +163,7 @@
             this.btnPre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPre.Image = ((System.Drawing.Image)(resources.GetObject("btnPre.Image")));
             this.btnPre.Location = new System.Drawing.Point(24, 20);
-            this.btnPre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPre.Margin = new System.Windows.Forms.Padding(4);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(56, 57);
             this.btnPre.TabIndex = 9;
@@ -176,7 +176,7 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.Location = new System.Drawing.Point(172, 19);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(56, 57);
             this.btnNext.TabIndex = 9;
@@ -189,7 +189,7 @@
             this.btnPause_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause_Start.Image = ((System.Drawing.Image)(resources.GetObject("btnPause_Start.Image")));
             this.btnPause_Start.Location = new System.Drawing.Point(96, 17);
-            this.btnPause_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPause_Start.Margin = new System.Windows.Forms.Padding(4);
             this.btnPause_Start.Name = "btnPause_Start";
             this.btnPause_Start.Size = new System.Drawing.Size(60, 60);
             this.btnPause_Start.TabIndex = 9;
@@ -200,7 +200,7 @@
             // trackBar_Voice
             // 
             this.trackBar_Voice.Location = new System.Drawing.Point(777, 36);
-            this.trackBar_Voice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBar_Voice.Margin = new System.Windows.Forms.Padding(4);
             this.trackBar_Voice.Maximum = 100;
             this.trackBar_Voice.Name = "trackBar_Voice";
             this.trackBar_Voice.Size = new System.Drawing.Size(156, 56);
@@ -323,7 +323,7 @@
             // 
             this.pb_Voice.Image = ((System.Drawing.Image)(resources.GetObject("pb_Voice.Image")));
             this.pb_Voice.Location = new System.Drawing.Point(741, 27);
-            this.pb_Voice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb_Voice.Margin = new System.Windows.Forms.Padding(4);
             this.pb_Voice.Name = "pb_Voice";
             this.pb_Voice.Size = new System.Drawing.Size(40, 44);
             this.pb_Voice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -335,7 +335,7 @@
             // trackBar_Position
             // 
             this.trackBar_Position.Location = new System.Drawing.Point(260, 51);
-            this.trackBar_Position.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBar_Position.Margin = new System.Windows.Forms.Padding(4);
             this.trackBar_Position.Maximum = 100;
             this.trackBar_Position.Name = "trackBar_Position";
             this.trackBar_Position.Size = new System.Drawing.Size(485, 56);
@@ -351,7 +351,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(16, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(214, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -395,6 +395,7 @@
             this.llblClear.TabStop = true;
             this.llblClear.Text = "    清空列表";
             this.llblClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.llblClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblClear_LinkClicked);
             this.llblClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // llblChose
@@ -424,7 +425,7 @@
             this.panelPlayList.Controls.Add(this.label3);
             this.panelPlayList.Controls.Add(this.btnClosePanel);
             this.panelPlayList.Location = new System.Drawing.Point(840, 124);
-            this.panelPlayList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelPlayList.Margin = new System.Windows.Forms.Padding(4);
             this.panelPlayList.Name = "panelPlayList";
             this.panelPlayList.Size = new System.Drawing.Size(494, 591);
             this.panelPlayList.TabIndex = 10;
@@ -447,7 +448,7 @@
             this.btnClosePanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClosePanel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClosePanel.Location = new System.Drawing.Point(449, 5);
-            this.btnClosePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClosePanel.Margin = new System.Windows.Forms.Padding(4);
             this.btnClosePanel.Name = "btnClosePanel";
             this.btnClosePanel.Size = new System.Drawing.Size(39, 31);
             this.btnClosePanel.TabIndex = 3;
@@ -459,7 +460,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
             this.panel1.Location = new System.Drawing.Point(16, 65);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(237, 639);
             this.panel1.TabIndex = 11;
@@ -483,7 +484,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UnclePlayer";

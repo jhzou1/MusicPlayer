@@ -11,11 +11,8 @@ using WMPLib;
 namespace MusicPlayer
 {
     /// <summary>
-    /// 喜科堂互联教育网址：xiketang.ke.qq.com
-    /// 原创设计：常慧勇    QQ：2934008878
     /// 版权声明：版权所有，侵权必究。本项目源码是开放式设计，不能用于任何商业用途！
     /// 如有更改，请标注哪些更改！
-    /// 本课程地址：https://ke.qq.com/course/248962
     /// </summary>
     public partial class FrmMain : Form
     {
@@ -65,16 +62,36 @@ namespace MusicPlayer
                 this.lbVideoList.Items.AddRange(this.playerCore.FileList.Keys.ToArray());
 
                 //【2】读取上次播放的位置并自动播放
-                int index = this.playerCore.ReadPlayIndex();
-                if (index > this.lbVideoList.Items.Count - 1 || index == -1)//如果保存的播放记录所对应的文件被删除或文件丢失
+
+                string playFileName = this.playerCore.ReadPlayFileName();
+
+
+                #region 旧方法
+                //int index = this.playerCore.ReadPlayIndex();
+
+                //if (index > this.lbVideoList.Items.Count - 1 || index == -1)//如果保存的播放记录所对应的文件被删除或文件丢失
+                //{
+                //    this.lbVideoList.SelectedIndex = 0;
+                //}
+                //else
+                //{
+                //    this.lbVideoList.SelectedIndex = index;
+                //}
+                #endregion
+
+                if (playFileName.Trim().Length==0)//如果保存的播放记录所对应的文件被删除或文件丢失
                 {
                     this.lbVideoList.SelectedIndex = 0;
                 }
                 else
                 {
-                    this.lbVideoList.SelectedIndex = index;
+                    this.lbVideoList.SelectedItem = playFileName;
+                    
                 }
+
+                //开启播放
                 lbVideoList_SelectedIndexChanged(null, null);
+
 
                 //【3】开启按钮
                 this.btnPause_Start.Enabled = true;
@@ -114,7 +131,7 @@ namespace MusicPlayer
                 //在文件播放列表《集合中》保存选择的视频列表
                 playerCore.FileList.Add(file_Name, playedFile);
 
-                //将新的播放文件，添加的《控件列表》
+                //将新的播放文件，添加的《控件列表》绑定数据List
                 this.lbVideoList.Items.AddRange(new string[] { file_Name });
             }
 
@@ -301,7 +318,11 @@ namespace MusicPlayer
         {
             if (this.lbVideoList.SelectedIndex != -1)
             {
-                this.playerCore.SavePlayIndex(this.lbVideoList.SelectedIndex);
+                //this.playerCore.SavePlayIndex(this.lbVideoList.SelectedIndex);
+
+                //使用文件名保存当前播放的文件
+                string currentItemName = this.lbVideoList.SelectedItem.ToString();
+                this.playerCore.SavSavePlayFileName(currentItemName);
             }
         }
 
@@ -456,5 +477,9 @@ namespace MusicPlayer
 
         #endregion
 
+        private void llblClear_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
