@@ -48,6 +48,13 @@ namespace MusicPlayer
         void SavePlayIndex(int index);
 
         /// <summary>
+        /// 使用文件名保存
+        /// </summary>
+        /// <param name="fileName"></param>
+        void SavSavePlayFileName(string fileName);
+
+
+        /// <summary>
         /// 清空播放列表
         /// </summary>
         void ClearPlayList();

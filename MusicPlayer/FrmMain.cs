@@ -65,6 +65,7 @@ namespace MusicPlayer
 
                 string playFileName = this.playerCore.ReadPlayFileName();
 
+                CurrentPlay currentPlay = this.playerCore.ReadPlayFile();
 
                 #region 旧方法
                 //int index = this.playerCore.ReadPlayIndex();
@@ -79,18 +80,19 @@ namespace MusicPlayer
                 //}
                 #endregion
 
-                if (playFileName.Trim().Length==0)//如果保存的播放记录所对应的文件被删除或文件丢失
+                if (currentPlay.FileName.Trim().Length==0)//如果保存的播放记录所对应的文件被删除或文件丢失
                 {
                     this.lbVideoList.SelectedIndex = 0;
                 }
                 else
                 {
-                    this.lbVideoList.SelectedItem = playFileName;
-                    
+                    this.lbVideoList.SelectedItem = currentPlay.FileName;
+                    //设置上次播放时长
+                    this.myPlayer.Ctlcontrols.currentPosition = currentPlay.CurrentPosition;
                 }
 
                 //开启播放
-                lbVideoList_SelectedIndexChanged(null, null);
+                lbVideoList_SelectedIndexChanged(null,null);
 
 
                 //【3】开启按钮
@@ -320,9 +322,9 @@ namespace MusicPlayer
             {
                 //this.playerCore.SavePlayIndex(this.lbVideoList.SelectedIndex);
 
-                //使用文件名保存当前播放的文件
+                //使用文件名保存当前播放的文件 播放进度保存
                 string currentItemName = this.lbVideoList.SelectedItem.ToString();
-                this.playerCore.SavSavePlayFileName(currentItemName);
+                this.playerCore.SavSavePlayFileName(currentItemName,this.myPlayer.Ctlcontrols.currentPosition);
             }
         }
 
@@ -423,6 +425,7 @@ namespace MusicPlayer
         #region 后续扩展...
 
         //播放模式、上次播放记录、上次播放进度保存到配置文件
+
 
         #endregion
 

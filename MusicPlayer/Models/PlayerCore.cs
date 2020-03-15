@@ -5,6 +5,7 @@ using System.Text;
 
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
 
 namespace MusicPlayer
 {
@@ -40,10 +41,12 @@ namespace MusicPlayer
         /// </summary>
         public void SaveNewList()
         {
-            FileStream fs = new FileStream("newList.obj", FileMode.Create);
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(fs, this.FileList);
-            fs.Close();
+            //FileStream fs = new FileStream("newList.obj", FileMode.Create);
+            //BinaryFormatter bf = new BinaryFormatter();
+            //bf.Serialize(fs, this.FileList);
+            //fs.Close();
+
+            FileHelper.SaveFileAsJson(this.FileList, "newList.json", "");
         }
 
         /// <summary>
@@ -52,14 +55,48 @@ namespace MusicPlayer
         /// <returns>返回读取是否成功</returns>
         public bool LoadNewList()
         {
-            if (File.Exists("newList.obj"))
+            #region 方法1
+            //if (File.Exists("newList.obj"))
+            //{
+            //    //【1】读取上次的播放列表
+            //    FileStream fs = new FileStream("newList.obj", FileMode.Open);
+            //    BinaryFormatter bf = new BinaryFormatter();
+            //    Dictionary<string, PlayedFile> vList = (Dictionary<string, PlayedFile>)bf.Deserialize(fs);
+            //    fs.Close();
+
+            //    //【2】判断这些文件是否还存在（将已经存在的添加到集合）
+            //    foreach (PlayedFile item in vList.Values)
+            //    {
+            //        if (File.Exists(item.FilePath))
+            //        {
+            //            //如果重新加载回去的是带后缀名的话那就和第一次加的时候不匹配，第一次加的是不带后缀名的.
+            //            string file_Name = item.FileName.Substring(0, item.FileName.LastIndexOf("."));//没有扩展名的文件名，作为集合的Key使用
+
+            //            this.FileList.Add(file_Name, item);
+            //        }
+            //    }
+
+            //    //【3】更新列表
+            //    if (this.FileList.Count == 0)//如果文件都没有了，则删除整个列表的保存
+            //    {
+            //        File.Delete("newList.obj");
+            //        return false;
+            //    }
+            //    else
+            //    {
+            //        SaveNewList();//重新保存最新的列表
+            //        return true;
+            //    }
+            //}
+            //else return false;
+
+            #endregion
+
+            string fileInfo = FileHelper.GetJson("newList.json");
+            if (fileInfo != "File does not exist!")
             {
                 //【1】读取上次的播放列表
-                FileStream fs = new FileStream("newList.obj", FileMode.Open);
-                BinaryFormatter bf = new BinaryFormatter();
-                Dictionary<string, PlayedFile> vList = (Dictionary<string, PlayedFile>)bf.Deserialize(fs);
-                fs.Close();
-
+                var vList = JsonConvert.DeserializeObject<Dictionary<string, PlayedFile>>(fileInfo);
                 //【2】判断这些文件是否还存在（将已经存在的添加到集合）
                 foreach (PlayedFile item in vList.Values)
                 {
@@ -71,7 +108,6 @@ namespace MusicPlayer
                         this.FileList.Add(file_Name, item);
                     }
                 }
-
                 //【3】更新列表
                 if (this.FileList.Count == 0)//如果文件都没有了，则删除整个列表的保存
                 {
@@ -84,7 +120,9 @@ namespace MusicPlayer
                     return true;
                 }
             }
-            else return false;
+            else
+                return false;
+
         }
         #endregion
 
@@ -113,6 +151,21 @@ namespace MusicPlayer
             sw.Close();
             fs.Close();
         }
+        /// <summary>
+        /// 这是保存上次播放进度
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="currentPosition"></param>
+        public void SavSavePlayFileName(string fileName,double currentPosition)
+        {
+            CurrentPlay PlayFile = new CurrentPlay
+            {
+                FileName= fileName,
+                CurrentPosition= currentPosition
+            };
+
+            FileHelper.SaveFileAsJson(PlayFile,"CurrentPlay.json","");
+        }
 
         /// <summary>
         /// 读取上一次播放位置：如果记住的是文件名，或索引，如果这个文件不存在，则要考虑，否则出错...
@@ -137,6 +190,8 @@ namespace MusicPlayer
         /// <returns></returns>
         public string ReadPlayFileName()
         {
+            ReadPlayFile();
+
             if (File.Exists("playFileName.obj"))
             {
                 FileStream fs = new FileStream("playFileName.obj", FileMode.Open);
@@ -149,6 +204,14 @@ namespace MusicPlayer
             else return "";
         }
 
+        public CurrentPlay ReadPlayFile()
+        {
+            string fileInfo=FileHelper.GetJson("CurrentPlay.json");
+
+            var jArray = JsonConvert.DeserializeObject<CurrentPlay>(fileInfo);
+
+            return jArray;
+        }
         #endregion
 
         #region 文件另存为和清空播放列表
@@ -190,5 +253,14 @@ namespace MusicPlayer
 
         #endregion
 
+    }
+    /// <summary>
+    /// 最近播放文件信息
+    /// </summary>
+    [Serializable]
+    public class CurrentPlay
+    {
+        public string FileName { get; set; }
+        public double CurrentPosition { get; set; }
     }
 }
