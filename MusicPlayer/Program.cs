@@ -24,5 +24,6 @@ namespace MusicPlayer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());
         }
+        public static ThemeSkin themeSkin=null;
     }
 }

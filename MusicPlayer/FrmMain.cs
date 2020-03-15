@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -19,6 +21,8 @@ namespace MusicPlayer
         //【1】初始化当前播放器操作类
         private PlayerCore playerCore = new PlayerCore();
 
+        //皮肤核心类
+        public ThemeCore themeCore = new ThemeCore();
 
         #region 项目初始化
 
@@ -51,6 +55,17 @@ namespace MusicPlayer
             LoadList();
 
             this.playerCore.PlayMode = "顺序播放";
+
+
+            //【5】皮肤设置
+            if (File.Exists("CurrentSkin.json"))
+            {
+                string skinStr = FileHelper.GetJson("CurrentSkin.json");
+                Program.themeSkin = JsonConvert.DeserializeObject<ThemeSkin>(skinStr);
+                SetTheme();
+            }
+            //绑定触发事件
+            themeCore.NotityEvent += SetTheme;
         }
 
         //加载最新播放列表
@@ -426,6 +441,21 @@ namespace MusicPlayer
 
         //播放模式、上次播放记录、上次播放进度保存到配置文件
 
+        /// <summary>
+        /// 皮肤切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSkin_Click(object sender, EventArgs e)
+        {
+            FrmTheme themeForm = new FrmTheme(themeCore);
+            themeForm.ShowDialog();
+        }
+        //接收更新皮肤事件
+        private void SetTheme()
+        {
+            themeCore.SetFormTheme(Program.themeSkin, this);
+        }
 
         #endregion
 
@@ -484,5 +514,7 @@ namespace MusicPlayer
         {
 
         }
+
+       
     }
 }

@@ -254,8 +254,9 @@ namespace MusicPlayer
         #endregion
 
     }
+
     /// <summary>
-    /// 最近播放文件信息
+    /// 最近播放文件信息类
     /// </summary>
     [Serializable]
     public class CurrentPlay

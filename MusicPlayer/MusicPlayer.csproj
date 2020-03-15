@@ -72,13 +72,24 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\IPlayerCore.cs" />
+    <Compile Include="BLL\IPlayerCore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\PlayedFile.cs" />
-    <Compile Include="Models\PlayerCore.cs" />
+    <Compile Include="BLL\PlayerCore.cs" />
+    <Compile Include="Models\ThemSkin.cs" />
+    <Compile Include="FrmTheme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTheme.Designer.cs">
+      <DependentUpon>FrmTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\ThemeCore.cs" />
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTheme.resx">
+      <DependentUpon>FrmTheme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

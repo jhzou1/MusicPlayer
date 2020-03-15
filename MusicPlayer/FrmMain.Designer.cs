@@ -59,6 +59,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnClosePanel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSkin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.myPlayer)).BeginInit();
             this.panel_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Voice)).BeginInit();
@@ -353,7 +354,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(16, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(214, 44);
+            this.pictureBox1.Size = new System.Drawing.Size(49, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -395,7 +396,6 @@
             this.llblClear.TabStop = true;
             this.llblClear.Text = "    清空列表";
             this.llblClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.llblClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblClear_LinkClicked);
             this.llblClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // llblChose
@@ -465,6 +465,19 @@
             this.panel1.Size = new System.Drawing.Size(237, 639);
             this.panel1.TabIndex = 11;
             // 
+            // btnSkin
+            // 
+            this.btnSkin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSkin.BackgroundImage")));
+            this.btnSkin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSkin.FlatAppearance.BorderSize = 0;
+            this.btnSkin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSkin.Location = new System.Drawing.Point(1160, 16);
+            this.btnSkin.Name = "btnSkin";
+            this.btnSkin.Size = new System.Drawing.Size(42, 32);
+            this.btnSkin.TabIndex = 12;
+            this.btnSkin.UseVisualStyleBackColor = true;
+            this.btnSkin.Click += new System.EventHandler(this.btnSkin_Click);
+            // 
             // FrmMain
             // 
             this.AllowDrop = true;
@@ -472,6 +485,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1336, 815);
+            this.Controls.Add(this.btnSkin);
             this.Controls.Add(this.panelPlayList);
             this.Controls.Add(this.panel_bar);
             this.Controls.Add(this.pictureBox1);
@@ -537,5 +551,6 @@
         private System.Windows.Forms.Button btnClosePanel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSkin;
     }
 }
